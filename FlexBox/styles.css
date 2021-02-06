@@ -1,0 +1,33 @@
+/* FLEXBOX에서는 자식과 대화하지 않음(?)
+컨테이너가 필요. */
+
+/* flexbox 컨테이너 */
+/* flex-direction row 가 기본(default) 옵션 */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  /* main axis가 row(가로)라면, cross axis는 column(세로)가 된다. */
+  /* 단, flex-direction이 row가 아닌 경우, 반대가 됨. */
+  /* main axis방향으로 item들을 움직임. */
+  justify-content: space-around;
+  /* cross axis 방향으로 item을 움직임. */
+  align-items: center;
+  /* align-items의 효과를 보기 위해 아래 높이를 추가 */
+  height: 80vh; 
+}
+
+.box {
+  background-color: rgb(190, 156, 121);
+  width: 200px;
+  height: 200px;
+  color: wheat;
+}
+/* 
+
+.box:nth-child(2) {
+  margin-left: 40px;
+}
+
+.box:nth-child(3){
+  margin-left: 40px;
+} */
