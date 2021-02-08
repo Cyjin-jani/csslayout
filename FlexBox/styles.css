@@ -1,81 +1,134 @@
-/* FLEXBOX에서는 자식과 대화하지 않음(?)
-컨테이너가 필요. */
-
-/* flexbox 컨테이너 */
-/* flex-direction row 가 기본(default) 옵션 */
-.father {
+/* GRID 에 대하여. */
+/* flexbox로는 그리드 (격자)를 만들기 어렵다. */
+/* 아래가 flex만으로는 만들기 어려운 이유임. */
+/* .father {
   display: flex;
-  /* flex-direction: column; */
-  /* main axis가 row(가로)라면, cross axis는 column(세로)가 된다. */
-  /* 단, flex-direction이 row가 아닌 경우, 반대가 됨. */
-  /* main axis방향으로 item들을 움직임. */
-  justify-content: space-around;
-  /* cross axis 방향으로 item을 움직임. */
-  /* align-items: center; */
-  /* align-items의 효과를 보기 위해 아래 높이를 추가 */
-  height: 80vh;
-  width: 100%;
-  /* 같은 줄(라인)에 있어야 함. 자식요소의 width가 조정됨. */
-  /* flex-wrap: nowrap; */
-  /* 자식 요소의 width를 지키면서 한 줄에 넣고, 범위를 넘으면 다음 줄로 넘김. */
-  /* flex-wrap: wrap; */
-  /* 하나의 라인의 요소들을 변경할 수 있음  */
-  /* 여기서는 father라는 블록의 라인을 기준으로 정렬함. */
-  /* align-content: center; */
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .child {
-  background-color: rgb(190, 156, 121);
-  /* flex-basis */
-  /* main axis에서 적용됨. */
-  /* 초기에 엘리먼트의 크기를 지정. 늘어나거나 줄어들기 전에만 유효 */
-  /* width 혹은 height가 됨 => flex-direction에 따라 정해짐. */
-  /* flex-basis: 30%; */
-  width: 200px;
-  height: 200px;
-  color: wheat;
+  flex-basis: 30%;
+  background-color: burlywood;
+  color: white;
   font-size: 50px;
+  font: bold;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* 자식 요소에서 정렬을 할 수 있는 두 가지 속성 align-self, order */
-/* 자식 요소 한 개만 cross axis 방향으로 정렬하는 align-self */
-/* .child:nth-child(2) {
-  align-self: center;
+.child:nth-child(4) {
+  margin-top: 10px;
 } */
 
-/* html을 직접 변경하기 어려운 경우, order를 사용해서 요소의 순서를 바꿀 수 있음 */
-/* order의 기본 값은 0이다.  */
-/* 즉, 아래는 기본값 보다 크기 때문에 더 나중이 됨. (작을 수록 우선) */
-/* .child:nth-child(2) {
-  order: 1; 
+/* --------------------------------- */
+/* 그리드 Basic Concepts */
+/* --------------------------------- */
+
+/* .father { */
+  /* display: grid; */
+  /* 원하는 갯수, 크기 만큼 그리드 지정 가능. 가로 방향으로 그리드 갯수가 정해진다. */
+  /* grid-template-columns: 250px 250px 250px;  */
+  /* 그리드 사이에 여백을 줄 수 있는 갭. */
+  /* gap: 10px; */
+  /* 위와 같이 한번에 선언해도 되고, 가로 세로 다른 여백값을 주고 싶으면 아래와 같이 따로따로 지정. */
+  /* column-gap: 10px;
+  row-gap: 10px; */
+
+  /* row의 크기를 지정하지 않는 다면 그리드 요소의 내용(컨텐츠)에 맞춰짐... */
+  /* 예를 들어, 글자가 있다면 글자의 폰트 사이즈에 맞춰짐. */
+  /* row의 크기는 아래와 같이 정할 수 있다. */
+  /* grid-template-rows:  100px 80px 300px; */
+
+/* } */
+/* .child {
+  background-color: burlywood;
+  color: white;
+  font-size: 50px;
+  font: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 } */
 
-/* 아래 두 속성은 반응형 화면을 만들기에 유리하다. */
-/* flex-shrink */
-/* width에 영향이 가는 경우, 다른 요소들에 비해 2배로 줄어듦. */
-/* 기본값은 1임. */
-/* 
-.child:nth-child(2) {
-  background-color: #000;
-  flex-shrink: 2;
-} 
-.child:nth-child(3) {
-  flex-shrink: 4;
+
+/* --------------------------------- */
+/* 그리드 templates area로 레이아웃 만들기*/
+/* --------------------------------- */
+
+/* grid-template-columns: 200px 200px 200px 200px;
+grid-template-rows: 300px 300px 300px 300px; */
+/* 위와 같이 쓰기 불편하므로, repeat함수를 쓰자. */
+
+/* .grid {
+  display: grid;
+  grid-template-columns: auto 200px;
+  grid-template-rows: 100px repeat(2, 200px) 100px;
+  grid-template-areas: 
+    "header header header header"
+    "content content content nav"
+    "content content content nav"
+    "footer footer footer footer"
+  ;
 }
-*/
 
-/* flex-grow */
-/* shrink와 반대로, 여유가 있으면 요소가 늘어나는 grow가 있다. */
-/* default값이 0이다 */
-/* 아래와 같은 경우, 남은 공간의 2/3을 2번자식요소가 가져가고 나머지를 3번 자식 요소가 가져감. */
-/* .child:nth-child(2) {
-  background-color: #000;
-  flex-grow: 2;
+.header {
+  background-color: #2ecc71;
+  grid-area: header;
 }
-.child:nth-child(3) {
-  flex-grow: 1;
+
+.content {
+  background-color: #3498db;
+  grid-area: content;
+}
+
+.nav {
+  background-color: #8e44ad;
+  grid-area: nav;
+}
+
+.footer {
+  background-color: #f39c12;
+  grid-area: footer;
 } */
 
+
+/* --------------------------------- */
+/* 그리드 templates area이해하기. (Rows and Columns)*/
+/* --------------------------------- */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 100px);
+  grid-template-rows: repeat(4, 100px);
+  gap: 10px;
+}
+
+/* grid-column-start, end는 컬럼 내 요소를 나타내는게 아니고, 라인을 나타낸다. */
+/* 즉, 아래 코드는 첫번째 줄에서 시작해서 5번째 줄에서 끝난다는 얘기. */
+.header {
+  background-color: #2ecc71;
+  grid-column-start: 1;
+  grid-column-end: 5;
+}
+
+.content {
+  background-color: #3498db;
+  grid-column-start: 1;
+  grid-column-end: 4;
+  grid-row-start: 2;
+  grid-row-end: 4;
+}
+
+.nav {
+  background-color: #8e44ad;
+  grid-row-start: 2;
+  grid-row-end: 4;
+}
+
+.footer {
+  background-color: #f39c12;
+  grid-column-start: 1;
+  grid-column-end: 5;
+}
