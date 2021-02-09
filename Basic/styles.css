@@ -98,37 +98,71 @@ grid-template-rows: 300px 300px 300px 300px; */
 /* 그리드 templates area이해하기. (Rows and Columns)*/
 /* --------------------------------- */
 
-.grid {
+/* .grid {
   display: grid;
   grid-template-columns: repeat(4, 100px);
   grid-template-rows: repeat(4, 100px);
   gap: 10px;
-}
+} */
 
 /* grid-column-start, end는 컬럼 내 요소를 나타내는게 아니고, 라인을 나타낸다. */
 /* 즉, 아래 코드는 첫번째 줄에서 시작해서 5번째 줄에서 끝난다는 얘기. */
-.header {
+/* grid-column-start: 1; grid-column-end: 5; */
+/* 위 코드와 같은 역할을 하지만, 짧게 줄여서 사용도 가능하다. (column, row 모두 가능) */
+/* -1은 결국 맨 마지막까지라는 뜻이다. (라인을 따로 셀 필요가 없어서 편함) */
+/* -2는 맨 마지막에서 두 번째이다. */
+/* 만약, 처음부터 끝까지라고 한다면, 그냥 span이라는 걸 사용해도 된다. 4개의 칸(공간)을 쓴다는 뜻과 비슷. */
+/* .header {
   background-color: #2ecc71;
-  grid-column-start: 1;
-  grid-column-end: 5;
+  grid-column: span 4;
 }
 
 .content {
   background-color: #3498db;
-  grid-column-start: 1;
-  grid-column-end: 4;
-  grid-row-start: 2;
-  grid-row-end: 4;
-}
+  grid-column: 1 / -2;
+  grid-row: 2 / span 2;
+} */
+/* 그냥 span 2도 가능 (아래 nav가 span 2이기에) */
 
-.nav {
+/* .nav {
   background-color: #8e44ad;
-  grid-row-start: 2;
-  grid-row-end: 4;
+  grid-row: span 2;
 }
 
 .footer {
   background-color: #f39c12;
-  grid-column-start: 1;
-  grid-column-end: 5;
+  grid-column: 1 / -1;
+} */
+
+
+/* 라인 네이밍 */
+/* 일일이 나열해서 라인에 이름을 붙일 수도 있고, repeat에 이름을 한꺼번에 같은 이름으로 넣을 수도 있다. */
+/* 단, repeat의 경우에는, 첫번째 라인이 지정되지 않으므로, 라인지정이 조금 꼬일 수 있다. (원래 2-4라면 1-3으로 수정) */
+.grid {
+  display: grid;
+  grid-template-columns: [first-line] 100px [second-line] 100px [third-line] 100px [fourth-line] 100px [fifth-line];
+  grid-template-rows: repeat(4, 100px [my-line]);
+  gap: 10px;
+}
+
+.header {
+  background-color: #2ecc71;
+  grid-column: span 4;
+}
+/* 보통은 column처럼 이름을 정해서 쓸 수 있음. */
+ /* row처럼 repeat으로 라인을 정한 경우(my-line) 아래와 같이 사용됨... */
+.content {
+  background-color: #3498db;
+  grid-column: first-line / fourth-line;
+  grid-row: my-line 1 / my-line 3;
+}
+
+.nav {
+  background-color: #8e44ad;
+  grid-row: span 2;
+}
+
+.footer {
+  background-color: #f39c12;
+  grid-column: 1 / -1;
 }
