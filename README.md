@@ -13,11 +13,11 @@
  - [x] Grid Basic
  - [x] Grid Template Area
  - [x] Rows and Columns
- - [ ] Shortcuts
- - [ ] Line Naming
- - [ ] Grid Template
- - [ ] Place Items
- - [ ] Place Content
+ - [x] Shortcuts
+ - [x] Line Naming
+ - [x] Grid Template
+ - [x] Place Items
+ - [x] Place Content
  - [ ] AUto Columns and Rows
  - [ ] Min and Max
  - [ ] Auto fit and auto fill

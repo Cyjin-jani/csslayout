@@ -61,6 +61,9 @@
 grid-template-rows: 300px 300px 300px 300px; */
 /* 위와 같이 쓰기 불편하므로, repeat함수를 쓰자. */
 
+/* 그리드 내부 요소들에 grid-area 속성으로 이름을 지정해준 뒤,
+그리드 컨테이너에서 템플릿 area로 해당 이름들의 사용이 가능하다. */
+
 /* .grid {
   display: grid;
   grid-template-columns: auto 200px;
@@ -138,7 +141,7 @@ grid-template-rows: 300px 300px 300px 300px; */
 /* 라인 네이밍 */
 /* 일일이 나열해서 라인에 이름을 붙일 수도 있고, repeat에 이름을 한꺼번에 같은 이름으로 넣을 수도 있다. */
 /* 단, repeat의 경우에는, 첫번째 라인이 지정되지 않으므로, 라인지정이 조금 꼬일 수 있다. (원래 2-4라면 1-3으로 수정) */
-.grid {
+/* .grid {
   display: grid;
   grid-template-columns: [first-line] 100px [second-line] 100px [third-line] 100px [fourth-line] 100px [fifth-line];
   grid-template-rows: repeat(4, 100px [my-line]);
@@ -148,10 +151,10 @@ grid-template-rows: 300px 300px 300px 300px; */
 .header {
   background-color: #2ecc71;
   grid-column: span 4;
-}
+} */
 /* 보통은 column처럼 이름을 정해서 쓸 수 있음. */
  /* row처럼 repeat으로 라인을 정한 경우(my-line) 아래와 같이 사용됨... */
-.content {
+/* .content {
   background-color: #3498db;
   grid-column: first-line / fourth-line;
   grid-row: my-line 1 / my-line 3;
@@ -165,4 +168,138 @@ grid-template-rows: 300px 300px 300px 300px; */
 .footer {
   background-color: #f39c12;
   grid-column: 1 / -1;
+} */
+
+/* --------------------------------- */
+/* 그리드 template (fraction)*/
+/* --------------------------------- */
+
+/* fraction 이란?  : 사용 가능한 공간을 뜻함. */
+/* fr을 사용하면 화면 비율에 맞춰서 사이즈가 맞춰지므로 반응형에 좋음. */
+/* 만약, 높이를 fr로 정하는 경우, 필히 높이를 지정해주어야 한다.
+높이 지정이 없다면 1fr은 그냥 0이기 떄문. */
+
+/* .grid {
+  display: grid;
+  gap: 5px;
+  height: 50vh; */
+  /* grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr); */
+  
+  /* row를 적고나서, 해당 row의 height을 적음 */
+  /* grid-template에서는 repeat의 적용이 불가 */
+  /* 아래와 같이 [] 안에 이름을 붙일 수 있음. (끝에만 사용하거나 앞만 사용하거나 둘다 사용하거나..) */
+  /* 맨 마지막에 / 뒤 1fr이 4개 붙는 거는 width에 대한 설정임. */
+  /* grid-template: 
+    [header-st] "header header header header" 1fr [header-end]
+    [content-st] "content content content nav" 2fr [content-end]
+    [footer-st] "footer footer footer footer" 1fr [footer-end] /1fr 1fr 1fr 1fr
+  ; */
+  /* naming이 없는 버젼. */
+  /* grid-template: 
+    "header header header header" 1fr
+    "content content content nav" 2fr
+    "footer footer footer footer" 1fr / 1fr 1fr 1fr 1fr
+  ;
+} */
+/* 
+.header {
+  background-color: #2ecc71;
+  grid-area: header;
+}
+
+.content {
+  background-color: #3498db;
+  grid-area: content;
+}
+
+.nav {
+  background-color: #8e44ad;
+  grid-area: nav;
+}
+
+.footer {
+  background-color: #f39c12;
+  grid-area: footer;
+} */
+
+
+/* --------------------------------- */
+/* place items */
+/* --------------------------------- */
+/* item은 각 그리드의 요소 하나하나에 관한 것이다.  */
+
+/* justify-items */
+/* 기본값은 stretch이며, 수평방향에 대해서 정렬. */
+/* grid-container는 모든 grid 자식요소를 갖고 있고, 
+해당 자식들을 늘여서 본인(container)를 채우게 함. */
+
+/* align-items */
+/* 기본값은 stretch이며, 수직 방향에 대한 정렬. */
+
+/* grid 자식 요소들에게 만일 내용(content)가 없다면,
+width, height가 있어야 표시가 된다.  (div에 글자들이 있기에 해당 컨텐츠(글자)만큼의 크기를 가짐) */
+
+/* 위의 두 가지 (justify, align items)를 통합한 속성이 있는데, 바로 place-items이다. */
+/* 첫번째가 수직이고, 그 다음이 수평이다. */
+/* .grid {
+  display: grid;
+  gap: 5px;
+  height: 50vh;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  place-items: stretch center;
+}
+
+.header {
+  background-color: #2ecc71;
+}
+
+.content {
+  background-color: #3498db;
+}
+
+.nav {
+  background-color: #8e44ad;
+}
+
+.footer {
+  background-color: #f39c12;
+} */
+
+
+/* --------------------------------- */
+/* place Content */
+/* --------------------------------- */
+/* Content는 그리드 전체의 배치에 대한 것이다. */
+
+/* justify-content와 align-content는 위의 item과 동일한 방향에 대한 설정이다.
+그리고, 역시 place-content로 통합이 가능하다.
+첫 번째가 수직, 그 다음이 수평이다. */
+
+.grid {
+  display: grid;
+  background-color: grey;
+  color: white;
+  gap: 5px;
+  height: 250vh;
+  grid-template-columns: repeat(4, 100px);
+  grid-template-rows: repeat(4, 100px);
+  place-content: center center;
+}
+
+.header {
+  background-color: #2ecc71;
+}
+
+.content {
+  background-color: #3498db;
+}
+
+.nav {
+  background-color: #8e44ad;
+}
+
+.footer {
+  background-color: #f39c12;
 }
