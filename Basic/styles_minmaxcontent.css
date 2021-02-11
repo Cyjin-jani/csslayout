@@ -1,0 +1,22 @@
+ /* --------------------------------- */
+/* min-content, max-content */
+/* --------------------------------- */
+
+/* min-content는 content가 최소로 작아질 수 있을 정도로 작아짐.
+max-cotent는 반대로, content에 맞춰 최대로 커질 수 있을 정도로 커짐. */
+/* 주로 반응형으로 만들기 쉬움. */
+
+.grid {
+  display: grid;
+  gap: 5px;
+  color: white;
+  grid-template-columns: repeat(auto-fit, minmax(20px, max-content));
+  grid-auto-rows: 100px;
+}
+
+.item:nth-child(odd) {
+  background-color: #2ecc71;
+}
+.item:nth-child(even) {
+  background-color: #3498db;
+}
