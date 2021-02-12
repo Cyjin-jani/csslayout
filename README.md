@@ -18,7 +18,7 @@
  - [x] Grid Template
  - [x] Place Items
  - [x] Place Content
- - [ ] AUto Columns and Rows
- - [ ] Min and Max
- - [ ] Auto fit and auto fill
- - [ ] min-content and max-content
+ - [x] AUto Columns and Rows
+ - [x] Min and Max
+ - [x] Auto fit and auto fill
+ - [x] min-content and max-content
