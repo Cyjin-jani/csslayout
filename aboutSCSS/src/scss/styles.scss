@@ -1,24 +1,30 @@
 @import url("https://fonts.googleapis.com/css2?family=B612+Mono&family=DM+Serif+Display:ital@0;1&display=swap");
 // 변수를 저장한 파일을 import하여 부른다.
 @import "_variables";
+@import "_mixins";
+@import "_buttons";
 
+//*******************************
+//Variables
+//*******************************
 
 // 저장된 변수를 사용하는 법은 아래와 같다.
 
-a {
-  color: $bg;
-}
+// a {
+//   color: $bg;
+// }
 
-h1 {
-  font-size: $title;
-}
+// h1 {
+//   font-size: $title;
+// }
 
-h2 {
-  color: $bg;
-}
+// h2 {
+//   color: $bg;
+// }
 
+//*******************************
 // Nesting
-
+//*******************************
 // .box {
 //   margin-top: 20px;
 //   h2 {
@@ -64,156 +70,88 @@ h2 {
 // 또한, nesting 안에서 또다른 nesting이 가능하다.
 // 아래 예시를 보자.
 
-.box {
-  margin-top: 20px;
-  &:hover {
-    background-color: greenyellow;
+// .box {
+//   margin-top: 20px;
+//   &:hover {
+//     background-color: greenyellow;
+//   }
+//   h2 {
+//     color: blue;
+//     &:hover {
+//       color: red;
+//     } 
+//   }
+//   button {
+//     color: red;
+//   }
+// }
+
+//*******************************
+// mixin
+//*******************************
+
+//일반적인 사용법
+// h1 {
+//   @include mainTitle();
+// }
+
+//파라미터에 프로퍼티(속성)을 넘기는 경우
+// a {
+//   margin-bottom: 10px;
+//   &:nth-child(odd) {
+//     @include link(blue);
+//   }
+  
+//   &:nth-child(even) {
+//     @include link(red);
+//   }
+// }
+
+//파라미터에 속성의 값이 아닌, 문자열을 보내는 경우
+// a {
+//   margin-bottom: 10px;
+//   &:nth-child(odd) {
+//     @include link("odd");
+//   }
+  
+//   &:nth-child(even) {
+//     @include link("even");
+//   }
+// }
+
+//about content
+// a {
+//   @include responsive {
+//     text-decoration: none; //여기가 content부분이 됨.
+//   }
+// }
+
+h1 {
+  color: red;
+  @include responsive("iphone") {
+    color: yellow;
   }
-  h2 {
-    color: blue;
-    &:hover {
-      color: red;
-    } 
+  @include responsive("iphone-l") {
+    font-size: 60px;
   }
-  button {
-    color: red;
+  @include responsive("tablet") {
+    color:green;
   }
 }
 
+//*******************************
+// extends
+//*******************************
+// 다른 코드를 확장하거나, 코드를 재사용하고 싶을 때 사용.
+// style을 분리할 수 있게 해줌. 또한 더 추가도 가능함.
+// extends에는 공통적인 스타일 속성들을 지정하고, 아래와 같이 태그에 따라서 다른 속성들을 적용해주면 됨.
 
-
-// @import "_elements";
-
-// * {
-//   box-sizing: border-box;
+// a {
+//   @extend %button;
+//   text-decoration: none;
 // }
 
-// body {
-//   font-family: "DM Serif Display", monospace;
-//   padding: 45px;
-//   background-color: aquamarine;
-// }
-
-// header {
-//   background-color: black;
-//   border: 1px solid black;
-//   margin-bottom: 100px;
-//   nav {
-//     ul {
-//       display: grid;
-//       gap: 1px;
-//       grid-template-columns: repeat(4, 1fr);
-//       grid-template-rows: repeat(2, 60px);
-//       li {
-//         background-color: white;
-//         display: flex;
-//         justify-content: center;
-//         align-items: center;
-//         &:nth-child(2) {
-//           grid-column-start: span 2;
-//           font-size: 32px;
-//           text-transform: uppercase;
-//         }
-//       }
-//     }
-//   }
-// }
-
-// main {
-//   h1,
-//   h6 {
-//     text-align: center;
-//   }
-//   h1 {
-//     font-size: 58px;
-//     margin-bottom: 20px;
-//   }
-//   h6 {
-//     font-family: "B612 Mono";
-//     font-size: 12px;
-//     margin-bottom: 50px;
-//   }
-// }
-
-// .hero {
-//   display: grid;
-//   grid-template-columns: repeat(4, 1fr);
-//   grid-template-rows: 80vh;
-//   margin-bottom: 150px;
-//   .hero__img {
-//     background-image: url("https://source.unsplash.com/random/");
-//     background-position: center center;
-//     background-size: cover;
-//     &:first-child {
-//       background-image: url("https://source.unsplash.com/random/1");
-//     }
-//     &:last-child {
-//       background-image: url("https://source.unsplash.com/random/2");
-//     }
-//     &:nth-last-child(2) {
-//       background-image: url("https://source.unsplash.com/random/3");
-//     }
-//   }
-// }
-
-// .arrivals {
-//   h4 {
-//     font-size: 36px;
-//     margin-bottom: 70px;
-//     text-align: center;
-//   }
-//   .wrapper {
-//     border: 1px solid black;
-//     display: grid;
-//     grid-template-columns: repeat(4, 1fr);
-//     grid-template-rows: 80vh auto;
-//     background-color: black;
-//     gap: 1px;
-//     .product,
-//     .arrivals__category {
-//       background-color: white;
-//     }
-//     .arrivals__category {
-//       grid-column-start: span 2;
-//       text-align: center;
-//       font-size: 20px;
-//       padding: 20px 0px;
-//     }
-//     .product {
-//       padding: 40px;
-//       display: grid;
-//       gap: 20px;
-//       grid-template-rows: 80% auto;
-//       .product__photo {
-//         background-color: black;
-//       }
-//       .product__data {
-//         display: flex;
-//         flex-direction: column;
-//         .price {
-//           margin-top: 10px;
-//         }
-//       }
-//     }
-//   }
-// }
-
-// footer {
-//   margin: 100px 0px;
-//   display: grid;
-//   grid-template-columns: repeat(4, 1fr);
-//   grid-template-rows: 10fr 2fr;
-//   background-color: black;
-//   gap: 1px;
-//   height: 200px;
-//   border: 1px solid black;
-//   div {
-//     background-color: white;
-//     &:first-child {
-//       grid-column: span 2;
-//     }
-//     &:last-child {
-//       grid-column: 1 / -1;
-//     }
-//   }
+// button {
+//   @extend %button;
+//   border: none;
 // }

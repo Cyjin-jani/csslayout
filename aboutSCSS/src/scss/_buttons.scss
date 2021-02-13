@@ -1,0 +1,16 @@
+// extends를 위한 예제 파일임.
+
+// extends는 다른 코드를 확장하거나, 코드를 재사용하고 싶을 때 사용.
+// %를 사용하여 extends를 사용함.
+// page에서 분리해야 하는 element들이 많을 때 매우 유용하다. (button, title, navigation, card 같은..)
+
+%button {
+  font-family: inherit;
+  border-radius: 7px;
+  font-size: 12px;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  background-color: peru;
+  color: white;
+  font-weight: 500;
+}

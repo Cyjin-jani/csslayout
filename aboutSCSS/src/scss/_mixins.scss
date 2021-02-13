@@ -1,0 +1,62 @@
+// scss functionality를 재사용할 수 있도록 해줌.
+// 또한, 상황에 따라 다르게 css를 적용하고 싶은 경우 사용하기에 좋다.
+
+// @mixin mainTitle {
+//   color: blue;
+//   font-size: 30px;
+//   margin-bottom: 12px;
+// }
+
+// 아래와 같이 파라미터 값을 넘겨서 원하는 컬러를 지정하는 것도 가능하다.
+
+// @mixin link($color) {
+//   text-decoration: none;
+//   display: block;
+//   color: $color;
+// }
+
+// 또한, 컬러를 넘기는 게 아니라, 문자를 넘겨받을 수도 있다.
+// 그리고 if-else역시 사용 가능하다.
+// @mixin link($word) {
+//   text-decoration: none;
+//   display: block;
+//   @if $word == "odd" {
+//     color: blue;
+//   } @else {
+//     color: red;
+//   }
+// }
+
+
+//콘텐트 @content 간단 예시
+// @mixin responsive {
+//   color: blue;
+//   @content;
+// }
+
+//구체적인 수치는 예시일 뿐....
+$minIphone: 500px;
+$maxIphone: 690px;
+$minTablet: $minIphone + 1;
+$maxTablet: 1120px;
+
+@mixin responsive($device) {
+  @if $device == 'iphone' {
+    @media screen and (min-width: $minIphone) and (max-width: $maxIphone) {
+      @content;
+    }
+  } @else if $device == 'tablet' {
+    @media screen and (min-width: $minTablet) and (max-width: $maxTablet) {
+      @content;
+    }
+  } @else if $device == 'iphone-l' {
+    @media screen and (min-width: $minIphone) and (max-width: $maxIphone) and (orientation: landscape) {
+      @content;
+    }
+  } @else if $device == 'ipad-l' {
+    @media screen and (min-width: $minIphone) and (max-width: $maxIphone) and (orientation: landscape) {
+      @content;
+    }
+      }
+}
+
