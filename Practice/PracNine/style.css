@@ -1,0 +1,245 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main {
+  display: grid;
+  width: 1300px;
+  height: 95vh;
+  border: 3px solid red;
+  grid-template-columns: 1fr 1.2fr;
+}
+
+.leftside {
+  background-color: black;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr 120px;
+}
+
+.indexSection {
+  background-color: darkorange;
+  grid-row: 1 / 3;
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+}
+
+.indexItem {
+  background-color: black;
+  color: white;
+}
+
+.indexItem:last-child {
+  display: flex;
+  align-items: flex-end;
+}
+
+.header {
+  font-size: 1rem;
+  padding-top: 0.5rem;
+  padding-left: 1rem;
+  font-style: italic;
+}
+
+.title {
+  font-size: 3rem;
+  padding-left: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.mainMenu {
+  display: flex;
+  flex-direction: column;
+
+}
+.menuItem {
+  border-top: 1px solid red;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+  padding-left: 1rem;
+  
+}
+.menuItem:hover {
+  background-color: darkgray;
+  color: red;
+}
+.menuItem:last-child {
+  border-bottom: 1px solid red;
+}
+
+.locationInfo {
+  padding-left: 1rem;
+  padding-bottom: 2rem;
+  font-size: 0.85rem;
+}
+.infoHd {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.homeSection {
+  background-color: black;
+  color: white;
+  border-left: 3px solid red;
+  border-right: 3px solid red;
+  border-bottom: 3px solid red;
+}
+
+.logo {
+  width: 100%;
+  height: 200px;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+.logo img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.homeContent {
+  margin-top: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: 0.8rem;
+}
+
+.serviceSection {
+  background-color: black;
+  color: white;
+  border-left: 3px solid red;
+  border-right: 3px solid red;
+}
+
+.serviceSection p {
+  padding-top: 1rem;
+  padding-left: 1rem;
+  padding-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.rightside {
+  background-color: black;
+  display: grid;
+  grid-template-rows: 1fr 120px;
+}
+
+.homePic {
+  background-color: black;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+}
+
+.item:nth-child(1) {
+  grid-column: 1 / 2;
+  grid-row: 1 / 5;
+  border-bottom: 3px solid red;
+  border-right: 3px solid red;
+  background-image: url("https://i.pinimg.com/originals/b9/24/2f/b9242f44aeec5fc5ea598469a5432042.jpg");
+  background-size: 100% 100%;
+}
+
+.item:nth-child(2) {
+  background-color: black;
+  grid-column: 2 / 3;
+  grid-row: 1 / 3;
+  background-image: url("https://www.wheremilan.com/wp-content/uploads/2016/04/mondo_milan.jpg");
+  background-size: 100% 100%;
+  border-bottom: 3px solid red;
+}
+.item:nth-child(3) {
+  background-color: firebrick;
+  grid-column: 2 / 3;
+  grid-row: 3 / 4;
+  display: grid;
+  grid-template-columns: 1fr 0.6fr;
+  grid-template-rows: repeat(2, 1fr);
+  border-bottom: 3px solid red;
+}
+
+.pics:nth-child(1) {
+  border-right: 3px solid red;
+  grid-column: 1 / 2;
+  grid-row: 1 / -1;
+  background-image: url("https://img-estaticos.atleticodemadrid.com/system/file5s/7564/medium2x2/san_siro.jpg?1387197620");
+  background-size: 100% 100%;
+}
+.pics:nth-child(2) {
+  border-bottom: 3px solid red;
+  background-image: url("https://www.wheremilan.com/wp-content/uploads/2014/12/San-Siro-Stadium-the-Temple-of-Football.jpg");
+  background-size: 100% 100%;
+}
+.pics:nth-child(3) {
+  background-image: url("https://thumbs.dreamstime.com/z/san-siro-stadium-milan-italy-september-aerial-view-175126658.jpg");
+  background-size: 100% 100%;
+}
+
+.item:nth-child(4) {
+  grid-column: 2 / 3;
+  grid-row: 4 / 5;
+  display: grid;
+  grid-template-columns: 0.5fr 1fr;
+  border-bottom: 3px solid red;
+}
+
+.uniformPic:nth-child(1) {
+  grid-column: 1 / 2;
+  border-right: 3px solid red;
+  background-image: url("https://4.bp.blogspot.com/-HjzPsPMtl5Y/XVvpaPTtehI/AAAAAAACEkw/UGyF0aExEfoWkukkf9ZZ0eBxI_THwm-xQCLcBGAs/s379/behind-design-puma-ac-milan-19-20-third-kit-2.jpg");
+  background-size: 100% 100%;
+}
+
+.uniformPic:nth-child(2) {
+  background-color: black;
+  background-image: url("https://i.pinimg.com/originals/9b/2a/19/9b2a1907172a4b0b65f3d72426a888cd.png");
+  background-size: 100% 100%;
+}
+
+.serv {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+}
+
+.servItem:nth-child(1) {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+
+.headCoach {
+  grid-column: 1 / 2;
+  grid-row: 1 / -1;
+  background-image: url("https://www.dailyherald.com/storyimage/DA/20191021/sports/310219955/AR/0/AR-310219955.jpg&updated=201910210605&MaxW=900&maxH=900&noborder&Q=80");
+  background-size: 100% 100%;
+}
+
+.director {
+  grid-row: 1 / 2;
+  border-bottom: 3px solid red;
+  border-left: 3px solid red;
+  background-image: url("https://media.nu.nl/m/2zbxl9dawllk_wd1280.jpg/directeuren-maldini-en-boban-moeten-ac-milan-weer-naar-de-top-leiden.jpg");
+  background-size: 100% 100%;
+}
+.owner {
+  grid-row: 2 / 3;
+  border-left: 3px solid red;
+  background-image: url("https://i2.wp.com/www.acmilaninfo.com/wp-content/uploads/2018/07/Paul-Singer-1.jpg?resize=563%2C353&ssl=1");
+  background-size: 100% 100%;
+}
+
+.servItem:nth-child(2) {
+  border-left: 3px solid red;
+  background-image: url("https://pbs.twimg.com/media/EixqkqJUMAAoNxx.jpg");
+  background-size: 100% 100%;
+}
+
+
